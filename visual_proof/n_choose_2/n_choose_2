@@ -1,0 +1,55 @@
+Require Import Arith.
+Require Import Omega.
+Require Import ssreflect.
+
+
+(*Definition of binomial coefficients from Laurent.Thery@inria.fr*)
+
+Fixpoint binomial (a : nat) : nat -> nat :=
+  fun b : nat =>
+  match a, b with
+  | _, 0 => 1
+  | 0, S b' => 0
+  | S a', S b' => binomial a' (S b') + binomial a' b'
+  end.
+
+
+Fixpoint sum (n : nat) : nat :=
+  match n with
+  | 0     => 0
+  | S k   => n + sum k
+  end.
+
+Lemma binom_fact : forall n : nat, binomial n 0 = 1.
+Proof.
+  simple induction n; auto.
+Qed.
+
+Lemma binom_fact2 : forall n : nat, binomial n 1 = n.
+Proof.
+  intros n.
+  elim n.
+  clear n.
+  (*base case*)
+    simpl.
+    reflexivity.
+  (*inductive step*)
+    intros m.
+    intros inductive_hypothesis.
+    simpl.
+    rewrite inductive_hypothesis; rewrite binom_fact; auto with zarith.
+Qed.
+
+Lemma n_choose_2 : forall n : nat, binomial n 2 = sum (n-1).
+Proof.
+  intros n.
+  elim n.
+  (*base case*)
+  - simpl.
+  reflexivity.
+  (*inductive case for n*)
+  - simpl.
+  intros m.
+  intros inductive_hypothesis.
+  rewrite binom_fact2.
+  
