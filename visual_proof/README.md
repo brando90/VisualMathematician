@@ -6,6 +6,8 @@ Visual proof stacks. Each stack contains visual proof, Coq proof, and human proo
 
 * Pythagorean Theorem
 
+The proof is based on the work of Chou Pei Suan Ching. The visual proof images came from [Wolfgang Slany](https://www.dbai.tuwien.ac.at/proj/pf2html/proofs/pythagoras/pythagoras/pythagoras.html).
+
 ## Binomial Coefficients
 
 ![](https://latex.codecogs.com/gif.latex?%7Bn%20%5Cchoose%202%7D%20%3D%20%5Csum_%7Bi%3D0%7D%5E%7Bi%3Dn-1%7D%20i)  
